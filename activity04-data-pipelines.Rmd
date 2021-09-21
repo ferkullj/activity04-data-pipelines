@@ -10,7 +10,7 @@ Most of the functions that we will use this semester are from the `{tidyverse}` 
 While we will focus on `{dplyr}`, it will be nice to be able to produce graphical displays.
 Therefore, instead of loading both `{dplyr}` and `{ggplot2}`, in the code chunk below we load all of the `{tidyverse}`.
 
-```{r load_packages, message = FALSE}
+```{r load_packages, message=FALSE}
 library(tidyverse)
 ```
 
@@ -89,6 +89,7 @@ Type the following in your **Console** pane, pressing Enter/Return at the end:
 
 ```
 temp <- read.csv("data/recent-grads.csv")
+
 ```
 
 Pause and look at the lack of output/messaging.
@@ -97,6 +98,7 @@ Now type the following in your **Console** pane, pressing Enter/Return at the en
 
 ```
 temp
+
 ```
 
 Pause and look at the output.
@@ -253,10 +255,7 @@ Name the code chunk `stem_low_salaries`.
 
 ```{r stem_low_salaries, message=TRUE}
 college_recent_grads %>% 
-  filter(major == stem_categories %in% c("Biology & Life Science",
-                     "Computers & Mathematics",
-                     "Engineering",
-                     "Physical Sciences") & median < 36000) %>%
+  filter(major %in% stem_categories, median < 36000) %>%
   select(major, p25th, median, p75th)
 
 ```
